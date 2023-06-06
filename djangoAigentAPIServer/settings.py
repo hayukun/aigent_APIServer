@@ -75,8 +75,12 @@ WSGI_APPLICATION = 'djangoAigentAPIServer.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'aigent_test_database',
+        'USER': 'root',
+        'PASSWORD': 'p@ssw0rd',
+        'HOST': 'db',
+        'PORT': '3306',
     }
 }
 
