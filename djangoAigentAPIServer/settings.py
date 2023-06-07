@@ -113,13 +113,13 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static/')]
 
 # デプロイ用に静的ファイルを収集するディレクトリを指定（開発環境では不要）
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 # mediaフォルダのURLパスを設定
-# MEDIA_URL = '/media/'
+MEDIA_URL = '/media/'
 
 # # アップロードファイルなどを読み込む際のフォルダの場所を記述
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
