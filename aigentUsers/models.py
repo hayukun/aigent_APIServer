@@ -20,12 +20,11 @@ class User(models.Model):
 
     id = models.AutoField(primary_key=True)
     user_displayName = models.CharField(unique=True, max_length=200)
-    user_image = models.ImageField(upload_to='', null=True, unique=True)
+    user_image = models.ImageField(upload_to='users_images/%Y%m_users/', null=True, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.user_displayName
-
 
     
