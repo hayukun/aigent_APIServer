@@ -19,7 +19,11 @@ from django.db import models
 class User(models.Model):
 
     id = models.AutoField(primary_key=True)
-    user_displayName = models.CharField(unique=True, max_length=200)
+    user_bondName = models.CharField(unique=True, max_length=210, default=None)
+    user_displayName = models.CharField(max_length=200)
+    user_hashCode = models.IntegerField(default=0000)
+    # LINE user ID
+    userID = models.CharField(unique=True, max_length=50, default=None)
     user_image = models.ImageField(upload_to='users_images/%Y%m_users/', null=True, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

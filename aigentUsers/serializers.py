@@ -4,11 +4,20 @@ from .models import User
 # 参考
 # https://chigusa-web.com/blog/django-rest-framework/
 class UserSerializer(serializers.ModelSerializer):
-
+    # ここに記載したものはfieldに記載しないといけない
     user_displayName = serializers.CharField(
-        max_length=50,
+        max_length=200,
         required=True
     )
+
+    userID = serializers.CharField(
+        max_length=50,
+    )
+
+    user_hashCode = serializers.IntegerField(
+        required=True
+    )
+
 
     def rename_imageName(self, value):
 
@@ -21,8 +30,8 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['user_displayName', 'user_image']
-        read_only_fields = ['id', 'created_at', 'updated_at']
+        fields = ['user_displayName', 'user_hashCode', 'userID', 'user_image']
+        read_only_fields = ['id', 'user_bondName', 'created_at', 'updated_at']
 
         
         

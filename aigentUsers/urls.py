@@ -8,5 +8,5 @@ router.register('userinfo', UserViewSet)
 urlpatterns = [
     path('', include(router.urls)),
     path('dummy/', UserDummyApiView.as_view()),
-    path('getUserInfo/', responseUserInfo),
+    path('searchFriendInfo/', responseUserInfo),
 ]

@@ -25,13 +25,25 @@ def responseUserInfo(request):
 
     if request.method == 'GET':
         if "user_displayName" in request.GET:
-            user_name = request.GET.get(key="user_displayName")
+            getUser_displayName = request.GET.get(key="user_displayName")
         else:
             print("ELSE: not exist user_displayName")
+            return Response(None)
+        
+        if "user_hashCode" in request.GET:
+            getUser_hashCode = request.GET.get(key="user_hashCode")
+        else:
+            print("ELSE: not exist user_hashCode")
+            return Response(None)
 
+        bondName = getUser_displayName + '#' + getUser_hashCode
 
-        user_info = User.objects.filter(user_displayName=user_name).all()
-        #user_info = User.objects.all()
-        serializer = UserSerializer(user_info, many=True)
-        return Response(serializer.data)
+        try:
+            user_info = User.objects.filter(user_bondName=bondName).all()
+            #user_info = User.objects.all()
+            serializer = UserSerializer(user_info, many=True)
+        
+            return Response(serializer.data)
+        except:
+            return Response(None)
 
