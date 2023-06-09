@@ -20,11 +20,25 @@ class User(models.Model):
     user_hashCode = models.IntegerField(default=0000)
     # LINE user ID
     userId = models.CharField(unique=True, max_length=50, default=None)
-    pictureUrl = models.ImageField(upload_to=save_imagePath, null=True, unique=True)
+    pictureUrl = models.CharField(max_length=200, default=None, null=True)
+    pictureContent = models.ImageField(upload_to=save_imagePath, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    def __str__(self):
-        return self.user_displayName
+class Friend(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='friends')
+    friend = models.ForeignKey(User, on_delete=models.CASCADE, related_name='friend_of')
+
+    class Meta:
+        unique_together = ['user', 'friend']
+
+class UserFavos(models.Model):
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='users')
+    # fovorite_thing = models.ForeignKey(FovoriteThings, on_delete=models.CASCADE, related_name='favos')
+
+    # class Meta:
+    #     unique_together = ['user', 'fovorite_thing']
+
 
     
