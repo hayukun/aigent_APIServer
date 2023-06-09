@@ -10,14 +10,15 @@ class UserSerializer(serializers.ModelSerializer):
         required=True
     )
 
-    userID = serializers.CharField(
+    userId = serializers.CharField(
         max_length=50,
     )
 
-    user_hashCode = serializers.IntegerField(
-        required=True
-    )
+    user_hashCode = serializers.IntegerField(read_only=True)
 
+    user_bondName = serializers.CharField(read_only=True)
+
+    pictureUrl = serializers.ImageField()
 
 
     # def validation_user_displayName(self, value):
@@ -26,8 +27,8 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['user_displayName', 'user_hashCode', 'userID', 'user_image']
-        read_only_fields = ['id', 'user_bondName', 'created_at', 'updated_at']
+        fields = ['user_displayName', 'user_hashCode', 'user_bondName', 'userId', 'pictureUrl']
+        read_only_fields = ['id', 'created_at', 'updated_at']
 
         
         

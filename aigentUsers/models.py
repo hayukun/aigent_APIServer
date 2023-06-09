@@ -19,8 +19,8 @@ class User(models.Model):
     user_displayName = models.CharField(max_length=200)
     user_hashCode = models.IntegerField(default=0000)
     # LINE user ID
-    userID = models.CharField(unique=True, max_length=50, default=None)
-    user_image = models.ImageField(upload_to=save_imagePath, null=True, unique=True)
+    userId = models.CharField(unique=True, max_length=50, default=None)
+    pictureUrl = models.ImageField(upload_to=save_imagePath, null=True, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
