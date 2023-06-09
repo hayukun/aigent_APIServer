@@ -19,14 +19,10 @@ class UserSerializer(serializers.ModelSerializer):
     )
 
 
-    def rename_imageName(self, value):
 
-        return value
-
-
-    def validation_user_displayName(self, value):
+    # def validation_user_displayName(self, value):
         
-        return value
+    #     return value
 
     class Meta:
         model = User

@@ -1,19 +1,15 @@
 from django.db import models
+import datetime
 
 # Create your models here.
 
-# # ユーザの画像データ格納テーブル
-# class Image(models.Model):
+# ユーザの画像データリネームして保存先を指定する関数
+def save_imagePath(instance, filename):
+    now = datetime.datetime.now()
+    ext = filename.split('.')[-1]
+    new_name = 'users_images/' + now.strftime("%Y_%m_%d") + '/' + instance.user_bondName
+    return f'{new_name}.{ext}'
 
-#     id = models.AutoField(primary_key=True)
-#     #image_type = models.CharField(max_length=64)
-#     image_content = models.BinaryField(null=True)
-#     #image_size = models.IntegerField()
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     updated_at = models.DateTimeField(auto_now=True)
-
-#     def __str__(self):
-#         return self.id
 
 # ユーザ情報格納テーブル
 class User(models.Model):
@@ -24,7 +20,7 @@ class User(models.Model):
     user_hashCode = models.IntegerField(default=0000)
     # LINE user ID
     userID = models.CharField(unique=True, max_length=50, default=None)
-    user_image = models.ImageField(upload_to='users_images/%Y%m_users/', null=True, unique=True)
+    user_image = models.ImageField(upload_to=save_imagePath, null=True, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
