@@ -32,13 +32,11 @@ def responseUserInfo(request):
         if "user_displayName" in request.GET:
             getUser_displayName = request.GET.get(key="user_displayName")
         else:
-            print("ELSE: not exist user_displayName")
             return Response({'error':'ユーザー名の取得に失敗しました[ERROR:01]'}, status=status.HTTP_400_BAD_REQUEST)
         
         if "user_hashCode" in request.GET:
             getUser_hashCode = request.GET.get(key="user_hashCode")
         else:
-            print("ELSE: not exist user_hashCode")
             return Response({'error':'ハッシュコードの取得に失敗しました[ERROR:02]'}, status=status.HTTP_400_BAD_REQUEST)
 
         bond_name = getUser_displayName + '#' + getUser_hashCode
