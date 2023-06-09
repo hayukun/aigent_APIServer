@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     # Use rest framework
     'rest_framework',
     'aigentUsers',
+    'aigentFavorites',
+    'aigentEventManager',
 ]
 
 MIDDLEWARE = [
