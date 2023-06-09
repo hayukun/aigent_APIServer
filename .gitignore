@@ -1,5 +1,7 @@
 *.log
 *.pyc
 __pycache__/
+media/
+static/
 
 settings_local.py
